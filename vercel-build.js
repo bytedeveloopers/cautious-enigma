@@ -1,6 +1,7 @@
 import { execSync } from 'child_process';
 import fs from 'fs-extra';
 
+// Build script for Vercel deployment
 console.log('Building assets with Vite...');
 execSync('npm run build', { stdio: 'inherit' });
 
