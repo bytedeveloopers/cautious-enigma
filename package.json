@@ -4,8 +4,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
-        "vercel-build": "node vercel-build.js"
+        "build": "vite build"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.21",
