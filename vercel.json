@@ -6,6 +6,5 @@
   },
   "rewrites": [
     { "source": "/(.*)", "destination": "/api/index.php" }
-  ],
-  "buildCommand": "composer install --no-dev --prefer-dist --optimize-autoloader && php artisan config:cache && php artisan route:cache && npm ci && npm run build"
+  ]
 }
