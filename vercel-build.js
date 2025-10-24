@@ -1,5 +1,5 @@
-const { execSync } = require('child_process');
-const fs = require('fs-extra');
+import { execSync } from 'child_process';
+import fs from 'fs-extra';
 
 console.log('Building assets with Vite...');
 execSync('npm run build', { stdio: 'inherit' });
