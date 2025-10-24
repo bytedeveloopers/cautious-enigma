@@ -1,5 +1,4 @@
 {
-  "buildCommand": "bash build.sh",
   "outputDirectory": "dist",
   "functions": {
     "api/index.php": {
