@@ -83,20 +83,44 @@ return [
             ]) : [],
         ],
 
-        'pgsql' => [
-            'driver' => 'pgsql',
-            'url' => env('DB_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'laravel'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
-            'charset' => env('DB_CHARSET', 'utf8'),
-            'prefix' => '',
-            'prefix_indexes' => true,
-            'search_path' => 'public',
-            'sslmode' => 'prefer',
-        ],
+        'pgsql' => (function () {
+            $url = env('DATABASE_URL');
+            if ($url) {
+                $parts = parse_url($url);
+                $host = $parts['host'] ?? null;
+                $port = $parts['port'] ?? 5432;
+                $database = ltrim($parts['path'] ?? '', '/');
+                $username = $parts['user'] ?? null;
+                $password = $parts['pass'] ?? null;
+                return [
+                    'driver'         => 'pgsql',
+                    'url'            => $url,
+                    'host'           => $host,
+                    'port'           => $port,
+                    'database'       => $database,
+                    'username'       => $username,
+                    'password'       => $password,
+                    'charset'        => 'utf8',
+                    'prefix'         => '',
+                    'prefix_indexes' => true,
+                    'search_path'    => 'public',
+                    'sslmode'        => env('DB_SSLMODE', 'prefer'),
+                ];
+            }
+            return [
+                'driver'         => 'pgsql',
+                'host'           => env('DB_HOST', '127.0.0.1'),
+                'port'           => env('DB_PORT', '5432'),
+                'database'       => env('DB_DATABASE', 'forge'),
+                'username'       => env('DB_USERNAME', 'forge'),
+                'password'       => env('DB_PASSWORD', ''),
+                'charset'        => 'utf8',
+                'prefix'         => '',
+                'prefix_indexes' => true,
+                'search_path'    => 'public',
+                'sslmode'        => env('DB_SSLMODE', 'prefer'),
+            ];
+        })(),
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',

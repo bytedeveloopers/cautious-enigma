@@ -218,6 +218,21 @@ Si encuentras algún bug, por favor abre un issue en GitHub con:
 - Comportamiento esperado
 - Screenshots (si aplica)
 
+## 🚀 Deploy to Vercel
+
+- Create project in Vercel and import this repo.
+- Set Environment Variables:
+  - `APP_ENV=production`
+  - `APP_DEBUG=false`
+  - `APP_URL=https://<your-vercel-domain>`
+  - `APP_KEY=<php artisan key:generate --show>`
+  - (Option A) `DATABASE_URL=postgres://user:pass@host:5432/dbname`
+  - (Option B) `DB_CONNECTION=pgsql`, `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`
+- First-time migrations should be run locally pointing to the remote DB:
+  ```bash
+  php artisan migrate --force && php artisan db:seed --force
+  ```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
