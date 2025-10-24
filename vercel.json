@@ -1,7 +1,7 @@
 {
   "outputDirectory": "dist",
   "functions": {
-    "api/index.php": {
+    "api/*.php": {
       "runtime": "vercel-php@0.7.4"
     }
   },
@@ -11,8 +11,8 @@
       "dest": "/public/build/$1"
     },
     {
-      "src": "/(css|js|images|fonts|favicon.ico|robots.txt)(.*)",
-      "dest": "/public/$1$2"
+      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot))",
+      "dest": "/public/$1"
     },
     {
       "src": "/(.*)",

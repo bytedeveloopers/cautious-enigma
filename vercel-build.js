@@ -21,8 +21,12 @@ fs.copySync('storage', 'dist/storage', { overwrite: true });
 console.log('Copying public directory to dist...');
 fs.copySync('public', 'dist/public', { overwrite: true });
 
-console.log('Copying api directory to dist...');
-fs.copySync('api', 'dist/api', { overwrite: true });
+console.log('Creating api directory and index.php...');
+fs.ensureDirSync('dist/api');
+const indexPhpContent = `<?php
+require __DIR__ . '/../public/index.php';
+`;
+fs.writeFileSync('dist/api/index.php', indexPhpContent);
 
 console.log('Copying root files...');
 fs.copyFileSync('artisan', 'dist/artisan');
