@@ -4,8 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import './components.css';
-
 /* Componentes personalizados */
 .btn-primary {
   background-color: #2563eb;
